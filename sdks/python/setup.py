@@ -147,7 +147,7 @@ REQUIRED_PACKAGES = [
     'futures>=3.2.0,<4.0.0; python_version < "3.0"',
     'grpcio>=1.29.0,<2',
     'hdfs>=2.1.0,<3.0.0',
-    'httplib2>=0.8,<0.18.0',
+    'httplib2>=0.8,<=0.18.0',
     'mock>=1.0.1,<3.0.0',
     'numpy>=1.14.3,<2',
     'pymongo>=3.8.0,<4.0.0',
