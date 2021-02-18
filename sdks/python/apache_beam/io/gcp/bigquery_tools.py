@@ -442,8 +442,6 @@ class BigQueryWrapper(object):
       request  # type: bigquery.BigqueryJobsInsertRequest
   ):
     """Inserts a BigQuery job.
-
-    If the job exists already, it returns it.
     """
     try:
       response = self.client.jobs.Insert(request)
@@ -455,13 +453,6 @@ class BigQueryWrapper(object):
           response.jobReference.jobId)
       return response
     except HttpError as exn:
-      if exn.status_code == 409:
-        _LOGGER.info(
-            "BigQuery job %s already exists, will not retry inserting it: %s",
-            request.job.jobReference,
-            exn)
-        return request.job
-      else:
         _LOGGER.info(
             "Failed to insert job %s: %s", request.job.jobReference, exn)
         raise
